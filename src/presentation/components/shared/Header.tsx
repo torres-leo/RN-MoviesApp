@@ -19,12 +19,15 @@ export default function Header({movie}: Props) {
   return (
     <>
       <View style={styles.backButton}>
-        <IonIcon
-          name="arrow-back-circle-outline"
-          size={60}
-          onPressFunct={() => navigation.goBack()}
-          color="black"
-        />
+        <View style={styles.backButtonShadow}>
+          <IonIcon
+            // name="arrow-back-circle-outline"
+            name="arrow-back-outline"
+            size={45}
+            onPressFunct={() => navigation.goBack()}
+            color="lightsalmon"
+          />
+        </View>
       </View>
 
       <View style={{...styles.imageContainer, height: screenHight * 0.7}}>
@@ -49,7 +52,7 @@ export default function Header({movie}: Props) {
 const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
-    shadowColor: '#000',
+    shadowColor: '#fff',
     shadowOffset: {
       width: 0,
       height: 10,
@@ -102,16 +105,23 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     zIndex: 999,
-    elevation: 9,
+    // elevation: 9,
     top: 35,
     left: 10,
+    borderWidth: 4,
+    borderRadius: '100%',
+    borderColor: '#ffffffc1',
   },
-  backButtonText: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold',
-    textShadowColor: 'rgba(0, 0, 0, 0.55)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10,
+  backButtonShadow: {
+    borderRadius: '100%',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 30,
   },
 });

@@ -2,15 +2,11 @@ import {HttpAdapter} from '../../../config/adapters/http/http.adapter';
 import {MovieDBMoviesResponse} from '../../../infrasctructure/interfaces/movie-db.responses';
 import {MovieMapper} from '../../../infrasctructure/mappers/movie.mapper';
 import {Movie} from '../../models/movie.model';
-
-interface Options {
-  page?: number;
-  limit?: number;
-}
+import {OptionsFetch} from '../../models/options-fetch.model';
 
 export const moviesPopularUseCase = async (
   fetcher: HttpAdapter,
-  options?: Options,
+  options?: OptionsFetch,
 ): Promise<Movie[]> => {
   try {
     const pupular = await fetcher.get<MovieDBMoviesResponse>('/popular', {

@@ -25,9 +25,9 @@ export default function Actor({actor}: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 10,
     display: 'flex',
     flexDirection: 'column',
+    marginRight: 10,
     width: 100,
   },
   actorInfo: {
@@ -35,16 +35,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   name: {
+    color: globalColors.white,
     fontSize: 15,
     fontWeight: '700',
     textAlign: 'center',
-    color: globalColors.white,
   },
   characterName: {
+    color: globalColors.gray,
     fontSize: 15,
     fontWeight: '500',
-    textAlign: 'center',
-    color: globalColors.gray,
     marginBottom: 5,
+    textAlign: 'center',
   },
 });

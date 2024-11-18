@@ -17,7 +17,12 @@ export default function IonIcon({
 }: Props) {
   return (
     <Pressable style={styles.container}>
-      <Icon name={name} size={size} color={color} onPress={onPressFunct} />
+      <Icon
+        name={name.trim()}
+        size={size}
+        color={color.trim()}
+        onPress={onPressFunct}
+      />
     </Pressable>
   );
 }
@@ -25,14 +30,14 @@ export default function IonIcon({
 const styles = StyleSheet.create({
   container: {
     borderRadius: '100%',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // shadowColor: '#ffffff',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 20,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
 
-    elevation: 5,
+    // elevation: 5,
   },
 });

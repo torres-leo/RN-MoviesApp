@@ -11,8 +11,15 @@ import FullScreenLoader from '../../components/loaders/FullScreen';
 export default function Home() {
   const {top} = useSafeAreaInsets();
 
-  const {isLoading, nowPlaying, popular, topRated, upcoming, popularNextPage} =
-    useMovies();
+  const {
+    isLoading,
+    nowPlaying,
+    popular,
+    topRated,
+    upcoming,
+    popularNextPage,
+    topRatedNextPage,
+  } = useMovies();
 
   if (isLoading) {
     return <FullScreenLoader />;
@@ -41,7 +48,11 @@ export default function Home() {
           title="Most Popular"
           loadNextPage={popularNextPage}
         />
-        <HorizontalCarousel movies={topRated} title="Top Rated" />
+        <HorizontalCarousel
+          movies={topRated}
+          title="Top Rated"
+          loadNextPage={topRatedNextPage}
+        />
       </View>
     </ScrollView>
   );

@@ -5,6 +5,7 @@ import * as UseCases from '../../core/use-cases';
 import {movieDBFetcher} from '../../config/adapters/http/movieDB.adapter';
 
 let popularPageNumber = 1;
+let topRatedPageNumber = 1;
 
 export default function useMovies() {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,6 +54,23 @@ export default function useMovies() {
     });
   };
 
+  const topRatedNextPage = async () => {
+    topRatedPageNumber++;
+
+    const topRatedMovies = await UseCases.moviesTopRatedUseCase(
+      movieDBFetcher,
+      {
+        page: topRatedPageNumber,
+      },
+    );
+
+    setTopRated(prev => {
+      const movieIds = new Set(prev.map(movie => movie.id));
+      const newMovies = topRatedMovies.filter(movie => !movieIds.has(movie.id));
+      return [...prev, ...newMovies];
+    });
+  };
+
   return {
     isLoading,
     nowPlaying,
@@ -62,5 +80,6 @@ export default function useMovies() {
 
     // Methods
     popularNextPage,
+    topRatedNextPage,
   };
 }
