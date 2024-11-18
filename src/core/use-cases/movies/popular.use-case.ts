@@ -3,11 +3,21 @@ import {MovieDBMoviesResponse} from '../../../infrasctructure/interfaces/movie-d
 import {MovieMapper} from '../../../infrasctructure/mappers/movie.mapper';
 import {Movie} from '../../models/movie.model';
 
+interface Options {
+  page?: number;
+  limit?: number;
+}
+
 export const moviesPopularUseCase = async (
   fetcher: HttpAdapter,
+  options?: Options,
 ): Promise<Movie[]> => {
   try {
-    const pupular = await fetcher.get<MovieDBMoviesResponse>('/popular');
+    const pupular = await fetcher.get<MovieDBMoviesResponse>('/popular', {
+      params: {
+        page: options?.page ?? 1,
+      },
+    });
 
     return pupular.results.map(result =>
       MovieMapper.fromMovieDBResultToModel(result),
